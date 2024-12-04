@@ -9,8 +9,8 @@ Original file is located at
 
 #before running this please change the RUNTIME to GPU (Runtime -> Change runtime type -> set harware accelarotor as GPU)
 #Mount our google drive
-from google.colab import drive
-drive.mount('/content/drive')
+# from google.colab import drive
+# drive.mount('/content/drive')
 
 #import libraries
 # !pip3 install face_recognition
@@ -158,21 +158,17 @@ train_transforms = transforms.Compose([
                                         transforms.Normalize(mean,std)])
 
 #test predict
-path_to_videos= ['/content/drive/My Drive/Datasets/examples_DF/id61_0006.mp4',
-                 '/content/drive/My Drive/Datasets/examples_DF/id61_0007.mp4',
-                 '/content/drive/My Drive/Datasets/examples_DF/id61_0008.mp4',
-                 '/content/drive/My Drive/Datasets/examples_DF/id61_0009.mp4',
-                 '/content/drive/My Drive/Datasets/examples_DF/id61_id60_0002.mp4',
-                 '/content/drive/My Drive/Datasets/examples_DF/id61_id60_0005.mp4',
-                 '/content/drive/My Drive/Datasets/examples_DF/id61_id60_0006.mp4',
-                 '/content/drive/My Drive/Datasets/examples_DF/id61_id60_0009.mp4'
-                 ]
+path_to_videos= ['examples/id61_id60_0002.mp4',
+                 'examples/id61_id60_0005.mp4',
+                 'examples/id61_0007.mp4',
+                 'examples/id61_0008.mp4'
+                ]
 #preprocessing for user input
 
 #40 frames: 7s
 video_dataset = validation_dataset(path_to_videos,sequence_length = 40,transform = train_transforms)
 model = Model(2).cuda()
-path_to_model = '/content/drive/My Drive/Models/model_89_acc_40_frames_final_data.pt'
+path_to_model = 'Data/model_89_acc_40_frames_final_data.pt'
 
 model.load_state_dict(torch.load(path_to_model, weights_only=True))
 model.eval()
