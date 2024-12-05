@@ -131,7 +131,7 @@ def predict(model, img):
 def load_model():
     model = Model(2).to(device)
     model_path = 'data/Models/model_89_acc_40_frames_final_data.pt'
-    model.load_state_dict(torch.load(model_path, weights_only=True))
+    model.load_state_dict(torch.load(model_path, weights_only=False))
     model.eval()
     return model, train_transforms
 

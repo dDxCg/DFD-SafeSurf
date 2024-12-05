@@ -13,7 +13,7 @@ CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['UPLOAD_FOLDER'] = "static"          # video khi gửi đến server được lưu ở thư mục static
 
-# yolov6_model = my_yolov6.my_yolov6("weights/fire_detect.pt", "cpu", "data/mydataset.yaml", 640, False)
+
 model, train_transforms = my_model.load_model()
 
 
